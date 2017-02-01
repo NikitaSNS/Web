@@ -1,7 +1,3 @@
+let func = (arr) => [arr.length.toString(), ...arr].reverse();
 
-
-function anonim(arr) {
-    return [arr.length.toString(), ...arr].reverse();
-}
-
-console.log(anonim([1, 2, 3, "LOL", "D"]));
+console.log(func([0, 2, 3, "LOL", "D"]));
