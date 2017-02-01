@@ -11,13 +11,12 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, recusandae?</p>
     <input type="text" placeholder="Имя" pattern="[A-Za-zА-Яа-яЁё]{2,10}" required autocomplete="off">
     <input type="text" placeholder="Фамилия" pattern="[A-Za-zА-Яа-яЁё]{2,14}" required autocomplete="off">
-
     <input id="male" type="radio" name="gender" value="male" required autocomplete="off">
     <label for="male">Мужской</label>
     <input id="female" type="radio" name="gender" value="female" required autocomplete="off">
     <label for="female">Женский</label>
-    <input type="number" placeholder="Возраст" min="1" max="100" required autocomplete="off">
-    <input type="date" placeholder="Дата рождения" min="1899-01-01" max="2010-01-01" required autocomplete="off">
+    <input type="number" placeholder="Возраст" min="1" max="100" pattern="\w+" required autocomplete="off">
+    <input type="date" placeholder="Дата рождения" min="1899-01-01" max="2010-12-31" required autocomplete="off">
     <input type="text" placeholder="Телефон" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
            required autocomplete="off">
     <input type="text" placeholder="Логин" pattern="\w{3,10}" required autocomplete="off">
