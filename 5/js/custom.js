@@ -9,4 +9,4 @@ function replaceString(string) {
 }
 
 
-console.log(replaceString('43W!!w!Aasdfdas1234!!#!@EDAS@Ddsa@!!as@!'));
+console.log(replaceString('!!!@@@||!43W!!w!Aasdfdas1234!!#!@EDAS@Ddsa@!!as@!!!@@@||!!'));
