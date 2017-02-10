@@ -1,0 +1,208 @@
+body {
+    padding-top: 17px;
+    display: block;
+    width: 900px;
+    margin: 0 auto;
+    background-image: url('../img/bg.png');
+    background-position: center;
+}
+
+p,
+h2 {
+    margin: 0;
+}
+
+.left-logo,
+.social-holder {
+    display: inline-block;
+}
+
+.left-logo {
+    margin-left: 15px;
+}
+
+header ul {
+    overflow: hidden;
+    display: inline-block;
+}
+
+header li {
+    display: inline-block;
+    margin-left: 7px;
+}
+
+.rigth-contact {
+    position: relative;
+    float: right;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.rigth-contact>legend {
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.rigth-contact>p {
+    text-align: center;
+}
+
+figure {
+    margin: 0;
+    position: relative;
+}
+
+figure>img {
+    width: 100%;
+}
+
+figcaption {
+    position: absolute;
+    bottom: 34px;
+    right: 12px;
+    width: 617px;
+    height: 126px;
+    background-color: rgba(0, 0, 0, 0.72);
+    color: #fff;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+figcaption>h2 {
+    text-transform: uppercase;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.rigth-contact,
+.news {
+    border: none;
+    border-top: 1px solid #ffc000;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffc000), to(transparent));
+    background-image: -webkit-linear-gradient(#ffc000, transparent);
+    background-image: -moz-linear-gradient(#ffc000, transparent), -moz-linear-gradient(#ffc000, transparent);
+    background-image: -o-linear-gradient(#ffc000, transparent), -o-linear-gradient(#ffc000, transparent);
+    background-image: linear-gradient(#ffc000, transparent), linear-gradient(#ffc000, transparent);
+    -moz-background-size: 1px 100%;
+    background-size: 1px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+}
+
+nav {
+    margin-top: -4px;
+    text-align: center;
+    background-color: #000;
+}
+
+nav ul {
+    height: auto;
+    padding: 20px 0px;
+    margin: 0px;
+}
+
+nav li,
+.rigth-contact p {
+    color: #ffc000;
+}
+
+nav li {
+    font-size: 1.2em;
+    display: inline;
+    font-weight: bold;
+    padding: 5px 48px;
+    border-right: 1px #ffc000 solid;
+}
+
+nav li:last-child {
+    border-right: none;
+}
+
+main {
+    margin-top: 20px;
+    padding: 0 30px;
+}
+
+main>section {
+    width: 60%;
+    display: inline-block;
+}
+
+main>aside {
+    width: 35%;
+    display: inline-block;
+    float: right;
+}
+
+main h2 {
+    text-align: center;
+}
+
+main section>p {
+    margin-top: 15px;
+}
+
+main legend,
+main h2 {
+    font-weight: normal;
+    font-size: 1.5em;
+}
+
+main legend,
+main h2,
+main fieldset time {
+    color: #ffe289;
+}
+
+main p {
+    color: #fff;
+}
+
+.news {
+    padding: 10px 25px;
+}
+
+.news time {
+    display: block;
+    margin-top: 10px;
+}
+
+main h2 {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
+}
+
+main h2:before,
+main h2:after {
+    position: absolute;
+    top: 51%;
+    overflow: hidden;
+    width: 30%;
+    height: 1px;
+    content: '\a0';
+}
+
+main h2::before {
+    background: linear-gradient(to left, rgba(255, 192, 0, 1), rgba(255, 0, 0, 0));
+}
+
+main h2::after {
+    background: linear-gradient(to right, rgba(255, 192, 0, 1), rgba(255, 0, 0, 0));
+}
+
+main h2:before {
+    margin-left: -30%;
+    text-align: right;
+}
+
+footer {
+    height: 100px;
+    width: 900px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #ffdc73;
+    background-image: url('../img/footer.png');
+}
