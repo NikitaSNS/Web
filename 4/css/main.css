@@ -38,12 +38,12 @@ header li {
     margin-right: 15px;
 }
 
-.rigth-contact>legend {
+.rigth-contact > legend {
     text-transform: uppercase;
     color: #fff;
 }
 
-.rigth-contact>p {
+.rigth-contact > p {
     text-align: center;
 }
 
@@ -52,7 +52,7 @@ figure {
     position: relative;
 }
 
-figure>img {
+figure > img {
     width: 100%;
 }
 
@@ -68,7 +68,7 @@ figcaption {
     padding-right: 40px;
 }
 
-figcaption>h2 {
+figcaption > h2 {
     text-transform: uppercase;
     margin-top: 25px;
     margin-bottom: 10px;
@@ -127,12 +127,12 @@ main {
     padding: 0 30px;
 }
 
-main>section {
+main > section {
     width: 60%;
     display: inline-block;
 }
 
-main>aside {
+main > aside {
     width: 35%;
     display: inline-block;
     float: right;
@@ -142,7 +142,7 @@ main h2 {
     text-align: center;
 }
 
-main section>p {
+main section > p {
     margin-top: 15px;
 }
 
