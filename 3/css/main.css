@@ -31,19 +31,19 @@ header li {
     margin-left: 7px;
 }
 
-.rigth-contact {
+.right-contact {
     position: relative;
     float: right;
     display: inline-block;
     margin-right: 15px;
 }
 
-.rigth-contact > legend {
+.right-contact > legend {
     text-transform: uppercase;
     color: #fff;
 }
 
-.rigth-contact > p {
+.right-contact > p {
     text-align: center;
 }
 
@@ -74,7 +74,7 @@ figcaption > h2 {
     margin-bottom: 10px;
 }
 
-.rigth-contact,
+.right-contact,
 .news {
     border: none;
     border-top: 1px solid #ffc000;
@@ -102,7 +102,7 @@ nav ul {
 }
 
 nav li a,
-.rigth-contact p {
+.right-contact p {
     color: #ffc000;
 }
 
