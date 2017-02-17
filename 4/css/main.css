@@ -3,7 +3,10 @@ body {
     display: block;
     max-width: 1000px;
     margin: 0 auto;
-    background: url('../img/bg.png') center;
+    background-image: url('../img/footer_t.png'), url('../img/bg.png');
+    background-repeat: no-repeat, no-repeat;
+    background-position: bottom, top;
+    background-color: #000;
 }
 
 p,
@@ -215,13 +218,15 @@ footer {
     justify-content: center;
 
     color: #ffdc73;
-    background-image: url('../img/footer.png');
-    background-position-x: center;
-    background-position-y: 10%;
+    /*
+            background-image: url('../img/footer.png');
+            background-position-x: center;
+            background-position-y: 10%;*/
 }
 
 footer > p {
-    padding: 15px 0;
+    text-align: center;
+    padding: 50px 0 20px 0;
 }
 
 @media all and (max-width: 660px) {
@@ -260,5 +265,17 @@ footer > p {
         font-size: 1.2em;
         margin-top: 15px;
         margin-bottom: 10px;
+    }
+}
+
+@media all and (max-width: 450px) {
+    figcaption {
+        position: initial;
+        bottom: 0;
+        right: 0;
+        width: auto;
+        background-color: rgba(0, 0, 0, 0.72);
+        color: #fff;
+        padding: 10px;
     }
 }
