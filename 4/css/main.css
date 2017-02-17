@@ -3,7 +3,7 @@ body {
     display: block;
     max-width: 1000px;
     margin: 0 auto;
-    background-image: url('../img/footer_t.png'), url('../img/bg.png');
+    background-image: url('../img/footer.png'), url('../img/bg.png');
     background-repeat: no-repeat, no-repeat;
     background-position: bottom, top;
     background-color: #000;
@@ -218,10 +218,6 @@ footer {
     justify-content: center;
 
     color: #ffdc73;
-    /*
-            background-image: url('../img/footer.png');
-            background-position-x: center;
-            background-position-y: 10%;*/
 }
 
 footer > p {
