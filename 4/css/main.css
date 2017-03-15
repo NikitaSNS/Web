@@ -9,6 +9,16 @@ body {
     background-color: #000;
 }
 
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
 p,
 h2 {
     margin: 0;
@@ -28,7 +38,7 @@ h2 {
     justify-content: space-around;
 }
 
-.top > * {
+.top>* {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -40,12 +50,12 @@ header ul {
     display: inline-block;
 }
 
-.right-contact > legend {
+.right-contact>legend {
     text-transform: uppercase;
     color: #fff;
 }
 
-.right-contact > p {
+.right-contact>p {
     text-align: center;
 }
 
@@ -54,7 +64,7 @@ figure {
     position: relative;
 }
 
-figure > img {
+figure>img {
     width: 100%;
 }
 
@@ -69,13 +79,13 @@ figcaption {
     padding-right: 40px;
 }
 
-figcaption > h2 {
+figcaption>h2 {
     text-transform: uppercase;
     margin-top: 25px;
     margin-bottom: 10px;
 }
 
-figcaption > p {
+figcaption>p {
     margin-bottom: 15px;
 }
 
@@ -138,14 +148,14 @@ main {
     flex-flow: row wrap;
 }
 
-main > section {
+main>section {
     display: flex;
     flex: 2;
     flex-flow: column;
     padding: 0 10px;
 }
 
-main > aside {
+main>aside {
     flex: 1;
 }
 
@@ -153,7 +163,7 @@ main h2 {
     text-align: center;
 }
 
-main section > p {
+main section>p {
     margin-top: 15px;
 }
 
@@ -216,11 +226,10 @@ footer {
     display: flex;
     flex-flow: row;
     justify-content: center;
-
     color: #ffdc73;
 }
 
-footer > p {
+footer>p {
     text-align: center;
     padding: 50px 0 20px 0;
 }
@@ -229,35 +238,28 @@ footer > p {
     main {
         flex-flow: column wrap;
     }
-
-    main > aside {
+    main>aside {
         margin-top: 10px;
     }
-
     .left-logo {
         order: 1;
     }
-
     .right-contact {
         order: 2;
     }
-
     .social-holder {
         order: 3;
     }
-
     nav ul {
         padding: 10px 0;
         border: none;
         flex-direction: column;
         flex-wrap: wrap;
     }
-
     nav li {
         margin-top: 5px;
     }
-
-    figcaption > h2 {
+    figcaption>h2 {
         font-size: 1.2em;
         margin-top: 15px;
         margin-bottom: 10px;
