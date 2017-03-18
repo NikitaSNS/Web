@@ -1,31 +1,18 @@
-document.querySelector('.print').onclick = function() {
-    window.print();
-}
+// let processId = setInterval(function () {
+//     console.log('tik-tak');
+// }, 3 * 1000);
+//
+// setTimeout(function () {
+//     clearInterval(processId);
+//
+//     console.log('clear');
+// }, 2 * 1000);
 
-document.querySelectorAll('.icon').forEach(function(e) {
-    if (e.className.indexOf('print') !== -1) {
-        return;
-    }
-    e.onclick = function() {
-        window.open(linkResolve(e.className.substring(5)), "_blank");
-    };
+
+
+let json;
+$.getJSON('/kladr.json', function(data) {
+    json = data;
 });
 
-
-function linkResolve(className) {
-
-    let comparison = {
-        'no_name': 'no_name',
-        'li': 'linkedin.com',
-        'mail': 'mail.ru',
-        'space': 'myspace.com',
-    }
-
-    let uri = 'http://www.';
-
-    if (comparison[className] !== undefined) {
-        return uri + comparison[className];
-    }
-
-    return uri + className + '.com';
-}
+console.log(json);
