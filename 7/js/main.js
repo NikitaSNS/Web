@@ -1,11 +1,11 @@
 let img = document.getElementById('top_img');
-img.onclick = function() {
+img.onclick = function () {
     setNextText('description');
 };
 
-img.onmouseover = function() {
+img.onmouseover = function () {
     setNextText('caption');
-}
+};
 
 function setNextText(id) {
     let element = document.getElementById(id);
@@ -17,7 +17,13 @@ function getNextText() {
 }
 
 function getText(index) {
-    return ["a", "b", "c", "d", "e"][index];
+    return [
+        "Learn Java, they said it'll be fun, they said",
+        "Lorem",
+        "Del",
+        "PHP TRUE",
+        "How to learn C++ in 21 days"
+    ][index];
 }
 
 function getRandomInt(min, max) {
