@@ -1,19 +1,115 @@
-let menuLis = $('.social-holder > li');
-
 //menuLis[4].after(menuLis[0]);
 
-console.log($(menuLis[5]).position().left - $(menuLis[4]).position().left);
+//move();
 
-$(menuLis[4]).animate(
-    getPositionToMove($(menuLis[3]).position().left, $(menuLis[4]).position().left),
-    2000,
-    function () {
+move();
+setInterval(move, 5 * 1000);
 
-});
+function move() {
 
-function getPositionToMove(to, from) {
-    return {
-        top: '-30px',
-        left: to - from,
-    };
+    let menuLis = $('.social-holder > li');
+
+    let indexFrom = getRandomInt(0, menuLis.length);
+    let indexTo = getRandomInt(0, menuLis.length);
+
+    let to = $(menuLis[indexTo]);
+    let from = $(menuLis[indexFrom]);
+
+    let destination = to.position().left - from.position().left;
+
+    console.log(destination);
+
+    upBlock(from, destination);
+
+    let blocksToShift = [];
+
+    if (destination > 0) {
+        $(menuLis).each(function (i, e) {
+            if (i > indexFrom && i <= indexTo) {
+                blocksToShift.push(e);
+            }
+        });
+    } else {
+        $(menuLis).each(function (i, e) {
+            if (i >= indexTo && i < indexFrom) {
+                blocksToShift.push(e);
+            }
+        });
+    }
+
+    shiftBlocks(blocksToShift, -destination / blocksToShift.length);
+
+    downBlock(from);
+
+    from.animate(
+        {
+            top: '0',
+        },
+        1000,
+        function () {
+            console.log(blocksToShift);
+
+            if (destination < 0) {
+                indexTo--;
+            }
+
+            console.log(indexTo);
+
+            if (indexTo === -1) {
+                $(menuLis[indexFrom])   .insertBefore(menuLis[0]);
+            } else {
+                menuLis[indexTo].after(menuLis[indexFrom]);
+            }
+            $(menuLis).each(function (i, e) {
+                $(e).removeAttr('style');
+            });
+
+            menuLis = $('.social-holder > li');
+            console.log(menuLis);
+        }
+    )
+
+}
+
+function downBlock($block) {
+    $block.animate(
+        {
+            top: '+=30px',
+        },
+        1000,
+        function () {
+
+        }
+    )
+}
+
+function shiftBlocks(blocks, destination) {
+    $(blocks).each(function (i, e) {
+        $(e).animate(
+            {
+                left: destination
+            },
+            2000,
+            function () {
+
+            }
+        );
+    });
+}
+
+function upBlock($block, destination) {
+    $block.animate(
+        {
+            top: '-30px',
+            left: destination
+        },
+        2000,
+        function () {
+
+        }
+    )
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
 }
