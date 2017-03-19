@@ -4,7 +4,7 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff:
-.idea/workspace.xml
+.idea
 .idea/tasks.xml
 
 # Sensitive or high-churn files:
@@ -42,7 +42,3 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
-
-Будет удалено .gitignore
-Будет удалено .idea/jsLibraryMappings.xml
-Будет удалено .idea/misc.xml
