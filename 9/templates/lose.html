@@ -16,7 +16,19 @@
 </main>
 
 <script>
-    location.href = '../'
+    let id = '#!/amazingcode';
+
+    history.replaceState(null, document.title, location.pathname + id);
+    history.pushState(null, document.title, location.pathname);
+
+    window.addEventListener("popstate", function () {
+        if (location.hash === id) {
+            history.replaceState(null, document.title, location.pathname);
+            setTimeout(function () {
+                location.replace("../");
+            }, 0);
+        }
+    }, false);
 </script>
 
 

@@ -6,17 +6,32 @@ class MenuItem {
         this.dom = domElement;
     }
 
-    initialize() {
-        this.dom.addEventListener('click', MenuItem.clickHandler);
+    initialize(handler) {
+        this.handler = handler;
+        this.dom.addEventListener('click', this.handler);
     }
 
     terminate() {
-        this.dom.removeEventListener('click', MenuItem.clickHandler);
+        this.dom.removeEventListener('click', this.handler);
+    }
+}
+
+class HandlerFactory {
+
+    constructor() {
+
     }
 
-    static clickHandler() {
-        window.location.href = './templates/win.html';
-        console.log('click');
+    static getHandler(win = false) {
+        return win ? HandlerFactory.winHandler : HandlerFactory.loseHandler;
+    }
+
+    static winHandler() {
+        window.location.href = './templates/win.html'
+    }
+
+    static loseHandler() {
+        window.location.href = './templates/lose.html'
     }
 }
 
@@ -28,24 +43,24 @@ class Menu {
         this.elements = Array.prototype.slice.call(domElements).map(function (e) {
             return new MenuItem(e);
         });
-
-        this.initialize();
     }
 
     initialize() {
-        this.activeElement = this.getRandomChild();
-        this.activeElement.initialize();
-        console.log(this.activeElement.dom.innerText);
+        let indexActiveElement = getRandomInt(0, this.elements.length);
+
+        this.indexActiveElement = indexActiveElement;
+
+        this.elements.forEach(function (e, i) {
+            e.initialize(HandlerFactory.getHandler(indexActiveElement === i));
+        });
+
+        console.log('Active : ' + this.elements[this.indexActiveElement].dom.innerText);
     }
 
     update() {
-        this.activeElement.terminate();
+        this.elements[this.indexActiveElement].terminate();
 
         this.initialize();
-    }
-
-    getRandomChild() {
-        return this.elements[getRandomInt(0, this.elements.length)]
     }
 }
 
@@ -56,9 +71,10 @@ class Game {
     }
 
     static run(game) {
-        game.checkGame();
 
-        this.timerId = setInterval(function () {
+        game.menu.initialize();
+
+        game.timerId = setInterval(function () {
             game.update();
         }, 3 * 1000);
     }
@@ -67,18 +83,22 @@ class Game {
         this.menu.update();
     }
 
-    stop() {
-        clearInterval(this.timerId);
-    }
-
-    checkGame() {
-        console.log(document.referrer);
+    isRedirectedFromLoser(url) {
+        console.log(url);
+        return url.indexOf('lose.html') !== -1;
     }
 }
 
-let game = new Game(document.querySelectorAll('nav > ul > li'));
 
-Game.run(game);
+window.onload = function () {
+    let game = new Game(document.querySelectorAll('nav > ul > li'));
+
+    if (game.isRedirectedFromLoser(document.referrer)) {
+        alert('Читер!');
+    } else {
+        Game.run(game);
+    }
+};
 
 
 function getRandomInt(min, max) {
