@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+<form action="send.php" method="post">
+
+    <h2>Регистрация</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, recusandae?</p>
+    <label for="name">Имя</label>
+    <input type="text" id="name" name="name">
+    <label for="lastName">Фамилия</label>
+    <input type="text" id="lastName" name="lastName">
+    <input id="male" type="radio" name="gender" value="male">
+    <label for="male">Мужской</label>
+    <input id="female" type="radio" name="gender" value="female">
+    <label for="female">Женский</label>
+    <br>
+    <label for="phone">Телефон</label>
+    <input type="text" id="phone">
+    <input type="checkbox" id="news" name="subscribe[]" value="news">
+    <label for="news">Новости</label>
+    <input type="checkbox" id="shares" name="subscribe[]" value="shares">
+    <label for="shares">Акции</label>
+    <input type="checkbox" id="groups" name="subscribe[]" value="groups">
+    <label for="groups">Группы</label>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
