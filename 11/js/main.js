@@ -39,8 +39,6 @@ function move() {
 
     shiftBlocks(blocksToShift, -destination / blocksToShift.length);
 
-    downBlock(from);
-
     from.animate(
         {
             top: '0',
@@ -56,7 +54,7 @@ function move() {
             console.log(indexTo);
 
             if (indexTo === -1) {
-                $(menuLis[indexFrom])   .insertBefore(menuLis[0]);
+                $(menuLis[indexFrom]).insertBefore(menuLis[0]);
             } else {
                 menuLis[indexTo].after(menuLis[indexFrom]);
             }
@@ -69,18 +67,6 @@ function move() {
         }
     )
 
-}
-
-function downBlock($block) {
-    $block.animate(
-        {
-            top: '+=30px',
-        },
-        1000,
-        function () {
-
-        }
-    )
 }
 
 function shiftBlocks(blocks, destination) {
