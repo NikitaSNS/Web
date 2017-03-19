@@ -17,8 +17,6 @@ function move() {
 
     let destination = to.position().left - from.position().left;
 
-    console.log(destination);
-
     upBlock(from, destination);
 
     let blocksToShift = [];
@@ -45,13 +43,9 @@ function move() {
         },
         1000,
         function () {
-            console.log(blocksToShift);
-
             if (destination < 0) {
                 indexTo--;
             }
-
-            console.log(indexTo);
 
             if (indexTo === -1) {
                 $(menuLis[indexFrom]).insertBefore(menuLis[0]);
@@ -61,9 +55,6 @@ function move() {
             $(menuLis).each(function (i, e) {
                 $(e).removeAttr('style');
             });
-
-            menuLis = $('.social-holder > li');
-            console.log(menuLis);
         }
     )
 
