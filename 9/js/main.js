@@ -15,7 +15,8 @@ class MenuItem {
     }
 
     static clickHandler() {
-        console.log('1');
+        window.location.href = './templates/win.html';
+        console.log('click');
     }
 }
 
@@ -48,7 +49,36 @@ class Menu {
     }
 }
 
-let menu = new Menu(document.querySelectorAll('nav > ul > li'));
+class Game {
+
+    constructor(menu) {
+        this.menu = new Menu(menu);
+    }
+
+    static run(game) {
+        game.checkGame();
+
+        this.timerId = setInterval(function () {
+            game.update();
+        }, 3 * 1000);
+    }
+
+    update() {
+        this.menu.update();
+    }
+
+    stop() {
+        clearInterval(this.timerId);
+    }
+
+    checkGame() {
+        console.log(document.referrer);
+    }
+}
+
+let game = new Game(document.querySelectorAll('nav > ul > li'));
+
+Game.run(game);
 
 
 function getRandomInt(min, max) {
