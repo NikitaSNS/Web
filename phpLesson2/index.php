@@ -10,6 +10,6 @@ $connect->set_charset('utf8');
 
 $id = 2001;
 echo '<pre>';
-var_dump($res = $connect->query("SELECT * FROM customers")->fetch_array());
+var_dump($res = $connect->query("SELECT * FROM customers")->fe());
 
 $connect->close();
