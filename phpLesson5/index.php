@@ -16,3 +16,8 @@ function noCache()
 }
 
 noCache();
+
+echo '<pre>';
+$headers = getallheaders();
+
+var_dump($headers);
