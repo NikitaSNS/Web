@@ -10,4 +10,4 @@ echo '<pre>';
 
 echo 'Сайт был посещен: ' . $count;
 
-setcookie('count', $count, -1);
+setcookie('count', $count, time() - (60 * 60 * 24 * 12));
