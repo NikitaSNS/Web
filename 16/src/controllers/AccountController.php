@@ -48,5 +48,7 @@ class AccountController extends Controller
     {
         $_SESSION = [];
         session_destroy();
+
+        $this->redirect('login');
     }
 }
