@@ -1,5 +1,5 @@
 <form method="post">
-    <h2>Регистрация</h2>
+    <h2>Профиль</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, recusandae?</p>
     <input type="text" placeholder="Имя" pattern="[A-Za-zА-Яа-яЁё]{2,10}" required autocomplete="off">
     <input type="text" placeholder="Фамилия" pattern="[A-Za-zА-Яа-яЁё]{2,14}" required autocomplete="off">

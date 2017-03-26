@@ -8,8 +8,10 @@
  */
 abstract class Controller
 {
-    protected function render($templatePath)
+    protected function render($templatePath, $variables = [])
     {
+        extract($variables);
+
         $viewsPath = ROOT . '/src/views/';
 
         include $viewsPath .'header.php';

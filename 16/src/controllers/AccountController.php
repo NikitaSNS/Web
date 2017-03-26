@@ -11,7 +11,7 @@ class AccountController extends Controller
     public function indexAction()
     {
         if (isset($_SESSION['auth'])) {
-            $this->redirect('news');
+            $this->redirect('profile');
         }
 
         if (isset($_POST['submit'])) {
@@ -28,20 +28,37 @@ class AccountController extends Controller
                 $_SESSION['auth'] = true;
                 $_SESSION['login'] = $login;
 
-                $this->redirect('news');
+                $this->redirect('profile');
             }
         }
 
         return $this->render('forms/login');
     }
 
-    public function newsAction()
+    public function profileAction()
     {
         if (!isset($_SESSION['auth'])) {
             $this->redirect('login');
         }
 
-        return $this->render('forms/profile');
+        if (isset($_POST['submit'])) {
+            $db = Database::getInstance()->getConnection();
+
+            $query = $db->prepare('SELECT * FROM users WHERE login=? AND `password`=?');
+            $query->bind_param("ss", $login, $password);
+            $query->execute();
+            $result = $query->get_result()->fetch_assoc();
+            if ($result !== null) {
+                $_SESSION['auth'] = true;
+                $_SESSION['login'] = $login;
+
+                $this->redirect('profile');
+            }
+        }
+
+        return $this->render('forms/profile', [
+            'title' => 'Профиль',
+        ]);
     }
 
     public function logoutAction()
