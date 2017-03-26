@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Nikita
- * Date: 26.03.2017
- * Time: 17:42
- */
+
+session_start();
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
