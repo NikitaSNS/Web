@@ -11,7 +11,6 @@ class AccountController
     public function indexAction()
     {
         echo 'index';
-        file_get_contents();
 
         return true;
     }
