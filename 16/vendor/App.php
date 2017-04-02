@@ -1,61 +1,28 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Nikita
- * Date: 26.03.2017
- * Time: 17:48
- */
 class App
 {
-    private $routes;
-
-    public function __construct()
+    public static function isAuth()
     {
-        $this->routes = parse_ini_file(ROOT . '/app/routing.ini')['routes'];
+        return isset($_SESSION['auth']);
     }
 
-    private function getURI()
+    public static function redirect($uri)
     {
-        if (!empty($_SERVER['REQUEST_URI'])) {
-            return trim($_SERVER['REQUEST_URI'], '/');
-        }
+        header('Location: ' . $uri . '.php');
+        exit();
     }
 
-    public function handle()
+    public static function render($templatePath, $variables = [])
     {
-        $uri = $this->getURI();
+        extract($variables);
 
-        foreach ($this->routes as $uriPattern => $path) {
+        $viewsPath = __DIR__ . '/../views/';
 
-            if (preg_match("~$uriPattern~", $uri)) {
+        include $viewsPath .'header.php';
+        include $viewsPath . $templatePath . '.php';
+        include $viewsPath .'footer.php';
 
-                $segments = explode(':', $path);
-
-                $controllerName = array_shift($segments) . 'Controller';
-
-                $actionName = array_shift($segments) . 'Action';
-
-//                $parameters = $segments;
-
-                $controllerObject = new $controllerName;
-
-                $result = call_user_func_array([$controllerObject, $actionName], []);
-
-                if ($result != null) {
-                    break;
-                }
-            }
-        }
-
-        // Hack for xampp and openserver where url is localhost/someUri/index.php
-        if (!isset($result)) {
-            (new AccountController())->indexAction();
-        }
-    }
-
-    public function getRootDir()
-    {
-        return __DIR__ . '/../';
+        return true;
     }
 }

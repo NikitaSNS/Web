@@ -3,8 +3,6 @@
 spl_autoload_register(function ($className) {
     //class directories
     $directorys = [
-        'src/controllers/',
-        'src/models/',
         'vendor/',
     ];
 

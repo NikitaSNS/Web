@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Nikita
- * Date: 26.03.2017
- * Time: 19:28
- */
 class Database
 {
     protected static $db;
@@ -14,7 +8,7 @@ class Database
 
     private function __construct()
     {
-        $settings = parse_ini_file(ROOT . '/app/settings.ini');
+        $settings = parse_ini_file(__DIR__ . '/../configs/settings.ini');
 
         $this->_connection = new mysqli($settings['host'], $settings['login'], $settings['password'], $settings['db_name']);
         $this->_connection->set_charset('utf8');
@@ -35,10 +29,5 @@ class Database
     public function getConnection()
     {
         return $this->_connection;
-    }
-
-    public function __destruct()
-    {
-        $this->_connection->close();
     }
 }
