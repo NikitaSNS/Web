@@ -13,18 +13,37 @@ $db = Database::getInstance()->getConnection();
 if (isset($_POST['submit'])) {
 
     $requiredFields = [
-        'firstName',
-        ''
-        // ToDo: Implement
+        new FormField('firstName', '[A-Za-zА-Яа-яЁё]{2,10}', 'Введите правильное имя'),
+        new FormField('lastName', '[A-Za-zА-Яа-яЁё]{2,14}', 'Введите правильную фамилию'),
+        new FormField('gender', '\w+', 'Введите правильный пол'),
+        new FormField('age', '\w+', 'Введите правильный возраст'),
+        new FormField('dateOfBirth', '2010-12-31', 'Введите правельную дату рождения'),
+        new FormField('phone', '', 'Введите правильный номер телефона'),
+        new FormField('login', '', 'Введите правильный логин'),
+        new FormField('passwordSms', '', 'Введите правильный пароль смс'),
+        new FormField('password', '', 'Введите правильный пароль'),
+        new FormField('submit', '', 'Нажмите кнопку :)'),
     ];
+    echo '<pre>';
+    foreach ($requiredFields as $field) {
+        if (!isset($_POST[$field->getFieldName()]) ||
+            empty($_POST[$field->getFieldName()]) ||
+            !preg_match('/' . $field->getPattern() . '+$/' , $_POST[$field->getFieldName()])
+        ) {
+            $error = $field->getError();
+            break;
+        }
 
-    if (isset($_POST['firstName'])) {
-        $firstName = $_POST['firstName'];
-    } else {
-
+        ${$field->getFieldName()} = '';
     }
 
-    echo '<pre>';
+
+    if (!isset($error)) {
+        echo '!NO ERROR!';
+    }
+
+    var_dump($error);
+
     var_dump($_POST);
     die();
 }
@@ -36,5 +55,6 @@ $result = $query->get_result()->fetch_assoc();
 
 App::render('forms/profile', [
     'title' => 'Профиль',
-    'form'  => $result
+    'form'  => $result,
+    'error' => $error
 ]);
