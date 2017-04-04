@@ -4,9 +4,11 @@
 
     <input type="text" name="firstName" value="<?php echo $form['first_name']; ?>" placeholder="Имя">
     <input type="text" name="lastName" value="<?php echo $form['last_name']; ?>" placeholder="Фамилия">
-    <input id="male" type="radio" name="gender" <?php echo $form['gender'] === 'male' ? 'checked' : '' ?> value="male" required autocomplete="off">
+    <input id="male" type="radio" name="gender" <?php echo $form['gender'] === 'male' ? 'checked' : '' ?> value="male"
+           required autocomplete="off">
     <label for="male">Мужской</label>
-    <input id="female" type="radio" name="gender" <?php echo $form['gender'] === 'female' ? 'checked' : '' ?> value="female" required autocomplete="off">
+    <input id="female" type="radio" name="gender" <?php echo $form['gender'] === 'female' ? 'checked' : '' ?>
+           value="female" required autocomplete="off">
     <label for="female">Женский</label>
     <input type="number" name="age" value="<?php echo $form['age']; ?>" placeholder="Возраст" min="1" max="100">
     <input type="date" name="dateOfBirth" value="<?php echo $form['date_of_birth']; ?>" placeholder="Дата рождения">
@@ -20,6 +22,11 @@
     <label for="shares">Акции</label>
     <input type="checkbox" id="groups" name="subscribe[]" <?php echo $form['groups'] ? 'checked' : '' ?> value="groups">
     <label for="groups">Группы</label>
+    <?php if (isset($error)): ?>
+        <hr>
+        <p class="error"><?php echo $error ?></p>
+        <hr>
+    <?php endif; ?>
     <input type="submit" name="submit" value="Submit">
 </form>
 

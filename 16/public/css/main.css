@@ -44,3 +44,7 @@ input[type="submit"] {
     border: none;
     background: linear-gradient(to top, #cba035, #fff4be);
 }
+
+form > p.error {
+    color: #fff;
+}
