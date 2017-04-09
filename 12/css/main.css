@@ -1,0 +1,283 @@
+body {
+    padding-top: 17px;
+    display: block;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-image: url('../img/footer.png'), url('../img/bg.png');
+    background-repeat: no-repeat, no-repeat;
+    background-position: bottom, top;
+    background-color: #000;
+}
+
+.left-logo > img {
+    cursor: pointer;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+p,
+h2 {
+    margin: 0;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.social-holder {
+    padding: 0;
+    margin: 0;
+    flex-grow: 2;
+    justify-content: space-around;
+}
+
+.top>* {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+header ul {
+    list-style-type: none;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.right-contact>legend {
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.right-contact>p {
+    text-align: center;
+}
+
+figure {
+    margin: 0;
+    position: relative;
+}
+
+figure>img {
+    width: 100%;
+}
+
+figcaption {
+    position: absolute;
+    bottom: 34px;
+    right: 12px;
+    width: 70%;
+    background-color: rgba(0, 0, 0, 0.72);
+    color: #fff;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+figcaption>h2 {
+    text-transform: uppercase;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+figcaption>p {
+    margin-bottom: 15px;
+}
+
+.right-contact,
+.news {
+    border: none;
+    border-top: 1px solid #ffc000;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffc000), to(transparent));
+    background-image: -webkit-linear-gradient(#ffc000, transparent);
+    background-image: -moz-linear-gradient(#ffc000, transparent), -moz-linear-gradient(#ffc000, transparent);
+    background-image: -o-linear-gradient(#ffc000, transparent), -o-linear-gradient(#ffc000, transparent);
+    background-image: linear-gradient(#ffc000, transparent), linear-gradient(#ffc000, transparent);
+    -moz-background-size: 1px 100%;
+    background-size: 1px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+}
+
+nav {
+    margin-top: -4px;
+    text-align: center;
+    background-color: #000;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 20px 0;
+    margin: 0;
+    justify-content: space-between;
+}
+
+nav li a,
+.right-contact p {
+    color: #ffc000;
+}
+
+nav li a {
+    text-decoration: none;
+}
+
+nav li {
+    flex: 1;
+    font-size: 1.2em;
+    display: inline;
+    font-weight: bold;
+    border-right: 1px #ffc000 solid;
+}
+
+nav li:last-child {
+    border-right: none;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-flow: row wrap;
+}
+
+main>section {
+    display: flex;
+    flex: 2;
+    flex-flow: column;
+    padding: 0 10px;
+}
+
+main>aside {
+    flex: 1;
+}
+
+main h2 {
+    text-align: center;
+}
+
+main section>p {
+    margin-top: 15px;
+}
+
+main legend,
+main h2 {
+    font-weight: normal;
+    font-size: 1.5em;
+}
+
+main legend,
+main h2,
+main fieldset time {
+    color: #ffe289;
+}
+
+main p {
+    color: #fff;
+}
+
+.news {
+    padding: 10px 25px;
+}
+
+.news time {
+    display: block;
+    margin-top: 10px;
+}
+
+main h2 {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
+}
+
+main h2:before,
+main h2:after {
+    position: absolute;
+    top: 51%;
+    overflow: hidden;
+    width: 30%;
+    height: 1px;
+    content: '\a0';
+}
+
+main h2::before {
+    background: linear-gradient(to left, rgba(255, 192, 0, 1), rgba(255, 0, 0, 0));
+}
+
+main h2::after {
+    background: linear-gradient(to right, rgba(255, 192, 0, 1), rgba(255, 0, 0, 0));
+}
+
+main h2:before {
+    margin-left: -30%;
+    text-align: right;
+}
+
+footer {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    color: #ffdc73;
+}
+
+footer>p {
+    text-align: center;
+    padding: 50px 0 20px 0;
+}
+
+@media all and (max-width: 660px) {
+    main {
+        flex-flow: column wrap;
+    }
+    main>aside {
+        margin-top: 10px;
+    }
+    .left-logo {
+        order: 1;
+    }
+    .right-contact {
+        order: 2;
+    }
+    .social-holder {
+        order: 3;
+    }
+    nav ul {
+        padding: 10px 0;
+        border: none;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    nav li {
+        margin-top: 5px;
+    }
+    figcaption>h2 {
+        font-size: 1.2em;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+}
+
+@media all and (max-width: 450px) {
+    figcaption {
+        position: initial;
+        bottom: 0;
+        right: 0;
+        width: auto;
+        background-color: rgba(0, 0, 0, 0.72);
+        color: #fff;
+        padding: 10px;
+    }
+}
