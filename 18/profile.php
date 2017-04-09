@@ -12,11 +12,6 @@ $db = Database::getInstance()->getConnection();
 
 if (isset($_POST['submit'])) {
 
-//    echo '<pre>';
-//    var_dump($_FILES);
-
-//    var_dump(App::uploadFile($_FILES['imgfile']));
-
     $requiredFields = [
         new FormField('first_name', '[A-Za-zА-Яа-яЁё]{2,10}', 'Введите правильное имя'),
         new FormField('last_name', '[A-Za-zА-Яа-яЁё]{2,14}', 'Введите правильную фамилию'),
@@ -74,22 +69,21 @@ if (isset($_POST['submit'])) {
 
         $sql .= implode($params, ', ');
 
-        $sql .= ', img_path =  \'' .  $infoAboutFile['filename'] . '\'';
+        $sql .= ', img_path =  \'' . $infoAboutFile['filename'] . '\'';
 
         $sql .= ' WHERE login=?';
 
-        $query = $db->prepare($sql);
-        $query->bind_param('s', $_SESSION['login']);
-        $query->execute();
+        $query = mysqli_prepare($db, $sql);
+        mysqli_stmt_bind_param($query, 's', $_SESSION['login']);
+        mysqli_stmt_execute($query);
         $_SESSION['login'] = $login;
-//        $result = $query->get_result()->fetch_assoc();
     }
 }
 
-$query = $db->prepare('SELECT * FROM users WHERE login=?');
-$query->bind_param('s', $_SESSION['login']);
-$query->execute();
-$result = $query->get_result()->fetch_assoc();
+$query = mysqli_prepare($db, 'SELECT * FROM users WHERE login=?');
+mysqli_stmt_bind_param($query,'s', $_SESSION['login']);
+mysqli_stmt_execute($query);
+$result = mysqli_fetch_assoc(mysqli_stmt_get_result($query));
 
 App::render('forms/profile', [
     'title' => 'Профиль',
