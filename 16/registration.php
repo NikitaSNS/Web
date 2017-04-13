@@ -4,13 +4,8 @@ session_start();
 
 include 'vendor/autoloader.php';
 
-if (!App::isAuth()) {
-    App::redirect('index');
-}
-
-$db = Database::getInstance()->getConnection();
-
 if (isset($_POST['submit'])) {
+    $db = Database::getInstance()->getConnection();
 
     $requiredFields = [
         new FormField('first_name', '[A-Za-zА-Яа-яЁё]{2,10}', 'Введите правильное имя'),
@@ -38,12 +33,14 @@ if (isset($_POST['submit'])) {
     }
 
     if (!isset($error)) {
-        $sql = 'UPDATE users SET ';
+//        $sql = 'INSERT INTO users ';
 
-        $params = [];
+        $columns = [];
+        $values = [];
 
         foreach ($requiredFields as $field) {
-            $params[] = $field->getFieldName() . '=\'' . ${$field->getFieldName()} . '\'';
+            $columns[] = $field->getFieldName();
+            $values[] = ${$field->getFieldName()};
         }
 
         $subscribeParams = [
@@ -53,29 +50,29 @@ if (isset($_POST['submit'])) {
         ];
 
         foreach ($subscribeParams as $subscribeParam) {
-            $params[] = $subscribeParam . '=' . (int)in_array($subscribeParam, $_POST['subscribe']);
+            $columns[] = $subscribeParam;
+            $values[] = @(int)in_array($subscribeParam, $_POST['subscribe']);
+        }
+
+        foreach ($values as &$value) {
+            $value = '\'' . $value . '\'';
         }
 
 
-        $sql .= implode($params, ', ');
+        $sql = 'INSERT INTO users (' . implode($columns, ', ') . ') VALUES (' . implode($values, ', ') . ')';
 
-        $sql .= ' WHERE login=?';
 
         $query = $db->prepare($sql);
-        $query->bind_param('s', $_SESSION['login']);
+
         $query->execute();
+        $_SESSION['auth'] = true;
         $_SESSION['login'] = $login;
-//        $result = $query->get_result()->fetch_assoc();
+        App::redirect('login');
     }
 }
 
-$query = $db->prepare('SELECT * FROM users WHERE login=?');
-$query->bind_param('s', $_SESSION['login']);
-$query->execute();
-$result = $query->get_result()->fetch_assoc();
-
 App::render('forms/profile', [
     'title' => 'Профиль',
-    'form'  => $result,
+    'form'  => $_POST,
     'error' => $error
 ]);
