@@ -3,7 +3,7 @@ body {
     display: block;
     max-width: 1000px;
     margin: 0 auto;
-    background-image: url('../img/footer.png'), url('../img/bg.png');
+    background-image: url('../../../4/img/footer.png'), url('../../../4/img/bg.png');
     background-repeat: no-repeat, no-repeat;
     background-position: bottom, top;
     background-color: #000;
@@ -90,7 +90,7 @@ figcaption>p {
 }
 
 .right-contact,
-.news {
+aside > .news {
     border: none;
     border-top: 1px solid #ffc000;
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffc000), to(transparent));
@@ -183,11 +183,11 @@ main p {
     color: #fff;
 }
 
-.news {
+aside > .news {
     padding: 10px 25px;
 }
 
-.news time {
+aside > .news time {
     display: block;
     margin-top: 10px;
 }
