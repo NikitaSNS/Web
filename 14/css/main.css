@@ -1,0 +1,15 @@
+@import url(https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i);
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+@font-face {
+    font-family: Yandex; /* Имя шрифта */
+    src: url(2.ttf); /* Путь к файлу со шрифтом */
+}
+
+.pointer {
+    cursor: pointer;
+}
