@@ -65,6 +65,15 @@
             <p class="editable second_phone"><?php echo $site['second_phone']; ?></p>
             <p class="editable adress"><?php echo $site['adress']; ?></p>
         </fieldset>
+        <?php if (!isset($_SESSION['auth'])) : ?>
+            <div class="auth">
+                <a href="login.php">Авторизация</a>
+            </div>
+        <?php else: ?>
+            <div class="auth">
+                <a href="logout.php">Выйти</a>
+            </div>
+        <? endif; ?>
     </div>
     <div>
         <figure>
