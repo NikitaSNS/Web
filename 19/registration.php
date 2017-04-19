@@ -4,13 +4,8 @@ session_start();
 
 include 'vendor/autoloader.php';
 
-if (!App::isAuth()) {
-    App::redirect('index');
-}
-
-$db = Database::getInstance()->getConnection();
-
 if (isset($_POST['submit'])) {
+    $db = Database::getInstance()->getConnection();
 
     $requiredFields = [
         new FormField('first_name', '[A-Za-zА-Яа-яЁё]{2,10}', 'Введите правильное имя'),
@@ -38,23 +33,28 @@ if (isset($_POST['submit'])) {
         ${$field->getFieldName()} = $_POST[$field->getFieldName()];
     }
 
-    unset($requiredFields[count($requiredFields) - 1]);
+    $isHasFile = !empty($_FILES['imgfile']['name']);
 
-    $infoAboutFile = App::uploadFile($_FILES['imgfile'], $login . $_FILES['imgfile']['name']);
+    if ($isHasFile) {
+        $infoAboutFile = App::uploadFile($_FILES['imgfile'], $login . $_FILES['imgfile']['name']);
 
-    if (isset($infoAboutFile['error'])) {
-        $error = $infoAboutFile['error'];
+        if (isset($infoAboutFile['error'])) {
+            $error = $infoAboutFile['error'];
+        }
     }
 
-
     if (!isset($error)) {
-        $sql = 'UPDATE users SET ';
 
-        $params = [];
+        $columns = [];
+        $values = [];
 
         foreach ($requiredFields as $field) {
-            $params[] = $field->getFieldName() . '=\'' . ${$field->getFieldName()} . '\'';
+            $columns[] = $field->getFieldName();
+            $values[] = ${$field->getFieldName()};
         }
+
+        $columns[] = 'img_path';
+        $values[] = isset($infoAboutFile['filename']) ? $infoAboutFile['filename'] : '';
 
         $subscribeParams = [
             'news',
@@ -63,32 +63,29 @@ if (isset($_POST['submit'])) {
         ];
 
         foreach ($subscribeParams as $subscribeParam) {
-            $params[] = $subscribeParam . '=' . (int)in_array($subscribeParam, $_POST['subscribe']);
+            $columns[] = $subscribeParam;
+            $values[] = @(int)in_array($subscribeParam, $_POST['subscribe']);
+        }
+
+        foreach ($values as &$value) {
+            $value = '\'' . $value . '\'';
         }
 
 
-        $sql .= implode($params, ', ');
+        $sql = 'INSERT INTO users (' . implode($columns, ', ') . ') VALUES (' . implode($values, ', ') . ')';
 
-        $sql .= ', img_path =  \'' . $infoAboutFile['filename'] . '\'';
-
-        $sql .= ' WHERE login=?';
 
         $query = mysqli_prepare($db, $sql);
-        mysqli_stmt_bind_param($query, 's', $_SESSION['login']);
+
         mysqli_stmt_execute($query);
+        $_SESSION['auth'] = true;
         $_SESSION['login'] = $login;
+        App::redirect('login');
     }
 }
 
-$query = mysqli_prepare($db, 'SELECT * FROM users WHERE login=?');
-mysqli_stmt_bind_param($query,'s', $_SESSION['login']);
-mysqli_stmt_execute($query);
-$result = mysqli_fetch_assoc(mysqli_stmt_get_result($query));
-
 App::render('forms/profile', [
     'title' => 'Профиль',
-    'form'  => $result,
+    'form'  => $_POST,
     'error' => $error
 ]);
-
-

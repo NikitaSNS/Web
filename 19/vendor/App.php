@@ -47,22 +47,21 @@ class App
             $filename,
             strrpos($filename, '.'),
             strlen($filename) - 1
-        ); // В переменную $ext заносим расширение загруженного файла.
+        );
 
         if (in_array($ext, $blacklist)) {
             return ['error' => 'Запрещено загружать исполняемые файлы'];
         }
 
-        $upload_dir = dirname(__DIR__) . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR; // Место, куда будут загружаться файлы.
-        $max_filesize = 8388608; // Максимальный размер загружаемого файла в байтах (в данном случае он равен 8 Мб).
+        $upload_dir = dirname(__DIR__) . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR;
+        $max_filesize = 8388608;
 
         if (!is_dir($upload_dir)) {
             mkdir($upload_dir, 777, true);
         }
 
 
-        if (!is_writable($upload_dir))  // Проверяем, доступна ли на запись папка, определенная нами под загрузку файлов.
-        {
+        if (!is_writable($upload_dir)) {
             return ['error' => 'Невозможно загрузить файл в папку "' . $upload_dir . '". Установите права доступа - 777.'];
         }
 
@@ -75,9 +74,8 @@ class App
         }
 
         if (!move_uploaded_file($file['tmp_name'],
-            $upload_dir .$filename)
-        ) // Загружаем файл в указанную папку.
-        {
+            $upload_dir . $filename)
+        ) {
             return ['error' => 'При загрузке возникли ошибки. Попробуйте ещё раз.'];
         }
 

@@ -10,8 +10,10 @@ class Database
     {
         $settings = parse_ini_file(__DIR__ . '/../configs/settings.ini');
 
-        $this->_connection = new mysqli($settings['host'], $settings['login'], $settings['password'], $settings['db_name']);
-        $this->_connection->set_charset('utf8');
+        $this->_connection = mysqli_connect($settings['host'], $settings['login'], $settings['password'],
+            $settings['db_name']);
+
+        mysqli_set_charset($this->_connection, 'utf8');
     }
 
     /**

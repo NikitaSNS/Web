@@ -13,10 +13,11 @@ if (isset($_POST['submit'])) {
     $login = $_POST['login'];
     $password = $_POST['password'];
 
-    $query = mysqli_prepare($db, 'SELECT * FROM users WHERE login=? AND `password`=?');
-    mysqli_stmt_bind_param($query, 'ss', $login, $password);
-    mysqli_stmt_execute($query);
-    $result = mysqli_fetch_assoc(mysqli_stmt_get_result($query));
+
+    $query = $db->prepare('SELECT * FROM users WHERE login=? AND `password`=?');
+    $query->bind_param('ss', $login, $password);
+    $query->execute();
+    $result = $query->get_result()->fetch_assoc();
     if ($result !== null) {
         $_SESSION['auth'] = true;
         $_SESSION['login'] = $login;

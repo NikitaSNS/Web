@@ -1,5 +1,7 @@
 <?php
 
+ini_set('display_errors', 'Off');
+
 spl_autoload_register(function ($className) {
     //class directories
     $directorys = [

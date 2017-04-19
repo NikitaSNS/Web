@@ -1,7 +1,10 @@
 <form method="post" enctype="multipart/form-data">
     <h2>Профиль</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, recusandae?</p>
-    <img src="public/upload/img/<?php echo $form['img_path']; ?>" alt="<?php echo str_replace($form['login'], '', $form['img_path'])?>">
+    <?php if (!empty($form['img_path'])) : ?>
+        <img src="public/upload/img/<?php echo $form['img_path']; ?>"
+             alt="<?php echo str_replace($form['login'], '', $form['img_path']) ?>">
+    <?php endif; ?>
 
     <input type="text" name="first_name" value="<?php echo $form['first_name']; ?>" placeholder="Имя">
     <input type="text" name="last_name" value="<?php echo $form['last_name']; ?>" placeholder="Фамилия">
