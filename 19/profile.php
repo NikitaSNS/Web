@@ -78,17 +78,17 @@ if (isset($_POST['submit'])) {
 
         $sql .= ' WHERE login=?';
 
-        $query = mysqli_prepare($db, $sql);
-        mysqli_stmt_bind_param($query, 's', $_SESSION['login']);
-        mysqli_stmt_execute($query);
+        $query = $db->prepare($sql);
+        $query->bind_param('s', $_SESSION['login']);
+        $query->execute();
         $_SESSION['login'] = $login;
     }
 }
 
-$query = mysqli_prepare($db, 'SELECT * FROM users WHERE login=?');
-mysqli_stmt_bind_param($query,'s', $_SESSION['login']);
-mysqli_stmt_execute($query);
-$result = mysqli_fetch_assoc(mysqli_stmt_get_result($query));
+$query = $db->prepare('SELECT * FROM users WHERE login=?');
+$query->bind_param('s', $_SESSION['login']);
+$query->execute();
+$result = $query->get_result()->fetch_assoc();
 
 App::render('forms/profile', [
     'title' => 'Профиль',

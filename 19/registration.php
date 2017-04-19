@@ -75,9 +75,9 @@ if (isset($_POST['submit'])) {
         $sql = 'INSERT INTO users (' . implode($columns, ', ') . ') VALUES (' . implode($values, ', ') . ')';
 
 
-        $query = mysqli_prepare($db, $sql);
+        $query = $db->prepare($sql);
 
-        mysqli_stmt_execute($query);
+        $query->execute();
         $_SESSION['auth'] = true;
         $_SESSION['login'] = $login;
         App::redirect('login');
