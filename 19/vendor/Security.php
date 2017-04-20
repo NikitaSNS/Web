@@ -57,7 +57,6 @@ class Security
         $_SESSION['ban'] = true;
         $_SESSION['ban_time'] = new DateTime();
         $_SESSION['ban_expiration'] = (clone ($_SESSION['ban_time']))->modify('+' . $min . ' minutes');
-        var_dump($_SESSION);
     }
 
     public static function checkSecurity(array $fields): bool
