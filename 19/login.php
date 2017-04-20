@@ -20,8 +20,7 @@ if (isset($_POST['submit'])) {
     $login = $_POST['login'];
     $password = $_POST['password'];
 
-    $password = Security::generatePassword($password, $login);
-
+    $password = Security::generatePassword($password);
 
     $query = $db->prepare('SELECT * FROM users WHERE login=? AND `password`=?');
     $query->bind_param('ss', $login, $password);

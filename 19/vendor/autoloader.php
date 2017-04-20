@@ -5,7 +5,7 @@
 spl_autoload_register(function ($className) {
     //class directories
     $directorys = [
-        'vendor/',
+        __DIR__ . '/../vendor/',
     ];
 
     //for each directory

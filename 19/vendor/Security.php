@@ -79,9 +79,9 @@ class Security
         return true;
     }
 
-    public static function generatePassword($password, $login): string
+    public static function generatePassword($password): string
     {
-        return md5(md5($password) . $login);
+        return md5(md5($password) . md5($password) . sha1(md5($password)));
     }
 
     public static function checkUser($db, $login)
@@ -105,11 +105,15 @@ class Security
 
     public static function saveInfo(string $key, string $info)
     {
-        $_SESSION[$key] = $info;
+        $_SESSION['save'][$key] = $info;
     }
 
-    public static function getInfo(string $key)
+    public static function getInfo(string $key = null)
     {
-        return $_SESSION[$key];
+        if ($key === null) {
+            return $_SESSION['save'];
+        }
+
+        return $_SESSION['save'][$key];
     }
 }

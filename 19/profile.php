@@ -83,6 +83,8 @@ if ($request->isHaveField('submit')) {
             $query = $db->prepare($sql);
             $query->bind_param('s', $_SESSION['login']);
             $query->execute();
+
+            $_SESSION['login'] = $fields['login'];
         }
     }
 }

@@ -5,6 +5,11 @@ form {
     padding: 15px;
 }
 
+form > input.highlight {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
 form > h2 {
     color: #ffffff;
     margin-top: 0;
@@ -20,6 +25,13 @@ form > p {
 
 form h4 a {
     color: #fff;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="number"] {
+    min-width:50%;
 }
 
 input {

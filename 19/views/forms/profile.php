@@ -35,3 +35,5 @@
     <input type="submit" name="submit" value="Принять">
 </form>
 <h3 style="text-align: center"><a href="logout.php">Выйти</a></h3>
+
+<script src="public/js/profile_checker.js"></script>
