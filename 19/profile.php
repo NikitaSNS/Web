@@ -28,10 +28,12 @@ if ($request->isHaveField('submit')) {
     $isHasFile = !empty($_FILES['imgfile']['name']);
 
     if ($isHasFile && !isset($error)) {
-        $infoAboutFile = App::uploadFile($_FILES['imgfile'], $login . $_FILES['imgfile']['name']);
+        $infoAboutFile = App::uploadFile($_FILES['imgfile'], $fields['login'] . $_FILES['imgfile']['name']);
 
         if (isset($infoAboutFile['error'])) {
             $error = $infoAboutFile['error'];
+        } else {
+            $fields['img_path'] = $infoAboutFile['filename'];
         }
     }
 
@@ -41,9 +43,7 @@ if ($request->isHaveField('submit')) {
         $params = [];
 
         if (isset($fields['password'])) {
-            $password = Security::generatePassword($fields['password'], $fields['login']);
-            $params[] = 'password=\'' . $password . '\'';
-            unset($fields['password']);
+            $fields['password'] = Security::generatePassword($fields['password'], $fields['login']);
         }
 
         foreach ($fields as $name => $value) {
@@ -60,34 +60,34 @@ if ($request->isHaveField('submit')) {
             $params[] = $subscribeParam . '=' . (int)in_array($subscribeParam, $_POST['subscribe']);
         }
 
-
-        $sql = 'UPDATE users SET ' . implode($params, ', ');
-
-        if ($isHasFile) {
-            $sql .= ', img_path =  \'' . $infoAboutFile['filename'] . '\'';
-        }
-
         if ($fields['login'] !== $_SESSION['login']) {
             if (Security::checkUser($db, $fields['login'])) {
                 $error = 'Пользователь под таким логином уже есть';
             }
         }
 
+        if (isset($fields['password'])) {
+            if ($fields['password'] === Security::getInfo('password')) {
+                $error = 'Нельзя использовать старый пароль';
+            }
+        }
+
         if (!isset($error)) {
-            $sql .= ' WHERE login=?';
+
+            foreach (Security::getInfoAboutUser($db, $_SESSION['login']) as $key => $item) {
+                Security::saveInfo($key, $item);
+            }
+
+            $sql = 'UPDATE users SET ' . implode($params, ', ') . ' WHERE login=?';
 
             $query = $db->prepare($sql);
             $query->bind_param('s', $_SESSION['login']);
             $query->execute();
-            $_SESSION['login'] = $fields['login'];
         }
     }
 }
 
-$query = $db->prepare('SELECT * FROM users WHERE login=?');
-$query->bind_param('s', $_SESSION['login']);
-$query->execute();
-$result = $query->get_result()->fetch_assoc();
+$result = Security::getInfoAboutUser($db, $_SESSION['login']);
 
 App::render('forms/profile', [
     'title' => 'Профиль',

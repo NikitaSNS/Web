@@ -27,7 +27,7 @@ class Security
         return $isFind;
     }
 
-    public static function checkXss(array $fields) : bool
+    public static function checkXss(array $fields): bool
     {
         $isFind = false;
         foreach ($fields as $field) {
@@ -47,12 +47,12 @@ class Security
         return $isFind;
     }
 
-    public static function isBanned() : bool
+    public static function isBanned(): bool
     {
         return isset($_SESSION['ban_expiration']) && $_SESSION['ban_expiration'] > (new DateTime());
     }
 
-    public static function ban(int $min) : void
+    public static function ban(int $min): void
     {
         $_SESSION['ban'] = true;
         $_SESSION['ban_time'] = new DateTime();
@@ -60,7 +60,7 @@ class Security
         var_dump($_SESSION);
     }
 
-    public static function checkSecurity(array $fields) : bool
+    public static function checkSecurity(array $fields): bool
     {
         if (self::isBanned()) {
             return false;
@@ -79,7 +79,7 @@ class Security
         return true;
     }
 
-    public static function generatePassword($password, $login) : string
+    public static function generatePassword($password, $login): string
     {
         return md5(md5($password) . $login);
     }
@@ -90,6 +90,26 @@ class Security
         $query->bind_param('s', $login);
         $query->execute();
         $result = $query->get_result()->fetch_assoc();
+
         return $result['count'] > 0;
+    }
+
+    public static function getInfoAboutUser($db, string $login)
+    {
+        $query = $db->prepare('SELECT * FROM users WHERE login=?');
+        $query->bind_param('s', $login);
+        $query->execute();
+
+        return $query->get_result()->fetch_assoc();
+    }
+
+    public static function saveInfo(string $key, string $info)
+    {
+        $_SESSION[$key] = $info;
+    }
+
+    public static function getInfo(string $key)
+    {
+        return $_SESSION[$key];
     }
 }

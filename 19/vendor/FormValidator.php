@@ -3,12 +3,15 @@
 
 class FormValidator
 {
-    public static function validate($formData)
+    const TYPE_REGISTRATION = 'REGISTRATION';
+    const TYPE_PROFILE = 'PROFILE';
+
+    public static function validate($formData, $type = self::TYPE_PROFILE)
     {
         $fields = self::getRequiredFields();
 
         $fields[] = new FormField('password', '(^(?!.*[А-Яа-яЁё])(?=(?:.*[A-Z]){1})(?=(?:.*[^A-Za-z0-9]){2}).{5,13})',
-            'Введите правильный пароль', false);
+            'Введите правильный пароль', $type === self::TYPE_REGISTRATION);
 
 
         $validData = [];
@@ -51,20 +54,4 @@ class FormValidator
             new FormField('password_sms', '\w{5}', 'Введите правильный пароль смс'),
         ];
     }
-
-//    /**
-//     * @param FormField[] $fields
-//     * @param array $formData
-//     * @return bool
-//     */
-//    public static function isValidFields(array $fields, array $formData)
-//    {
-//        foreach ($fields as $field) {
-//            if (!isset($formData[$field->getFieldName()]) || $formData) {
-//                return $field->getError();
-//            }
-//        }
-//
-//        return true;
-//    }
 }
