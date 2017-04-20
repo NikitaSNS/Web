@@ -83,4 +83,13 @@ class Security
     {
         return md5(md5($password) . $login);
     }
+
+    public static function checkUser($db, $login)
+    {
+        $query = $db->prepare('SELECT COUNT(*) AS `count` FROM users WHERE login=?');
+        $query->bind_param('s', $login);
+        $query->execute();
+        $result = $query->get_result()->fetch_assoc();
+        return $result['count'] > 0;
+    }
 }

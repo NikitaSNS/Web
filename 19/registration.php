@@ -75,12 +75,18 @@ if (isset($_POST['submit'])) {
         $sql = 'INSERT INTO users (' . implode($columns, ', ') . ') VALUES (' . implode($values, ', ') . ')';
 
 
-        $query = $db->prepare($sql);
+        if (Security::checkUser($db, $login)) {
+            $error = 'Пользователь под таким логином уже есть';
+        }
 
-        $query->execute();
-        $_SESSION['auth'] = true;
-        $_SESSION['login'] = $login;
-        App::redirect('login');
+        if (!isset($error)) {
+            $query = $db->prepare($sql);
+
+            $query->execute();
+            $_SESSION['auth'] = true;
+            $_SESSION['login'] = $login;
+            App::redirect('login');
+        }
     }
 }
 

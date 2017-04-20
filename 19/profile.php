@@ -20,7 +20,6 @@ $db = Database::getInstance()->getConnection();
 if ($request->isHaveField('submit')) {
 
     $fields = FormValidator::validate($request->getFields());
-    var_dump($fields);
 
     if (isset($fields['error'])) {
         $error = $fields['error'];
@@ -43,7 +42,7 @@ if ($request->isHaveField('submit')) {
 
         if (isset($fields['password'])) {
             $password = Security::generatePassword($fields['password'], $fields['login']);
-            $params[] = 'password=\'' . $fields['password'] . '\'';
+            $params[] = 'password=\'' . $password . '\'';
             unset($fields['password']);
         }
 
@@ -68,13 +67,20 @@ if ($request->isHaveField('submit')) {
             $sql .= ', img_path =  \'' . $infoAboutFile['filename'] . '\'';
         }
 
+        if ($fields['login'] !== $_SESSION['login']) {
+            if (Security::checkUser($db, $fields['login'])) {
+                $error = 'Пользователь под таким логином уже есть';
+            }
+        }
 
-        $sql .= ' WHERE login=?';
+        if (!isset($error)) {
+            $sql .= ' WHERE login=?';
 
-        $query = $db->prepare($sql);
-        $query->bind_param('s', $_SESSION['login']);
-        $query->execute();
-        $_SESSION['login'] = $fields['login'];
+            $query = $db->prepare($sql);
+            $query->bind_param('s', $_SESSION['login']);
+            $query->execute();
+            $_SESSION['login'] = $fields['login'];
+        }
     }
 }
 
