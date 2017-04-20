@@ -11,18 +11,37 @@ class FormField
     private $fieldName;
     private $pattern;
     private $error;
+    private $required;
 
     /**
      * FormField constructor.
      * @param $fieldName
      * @param $pattern
      * @param $error
+     * @param bool $required
      */
-    public function __construct($fieldName, $pattern, $error)
+    public function __construct($fieldName, $pattern, $error, $required = true)
     {
         $this->fieldName = $fieldName;
         $this->pattern = $pattern;
         $this->error = $error;
+        $this->required = $required;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRequired(): bool
+    {
+        return $this->required;
+    }
+
+    /**
+     * @param bool $required
+     */
+    public function setRequired(bool $required)
+    {
+        $this->required = $required;
     }
 
     /**

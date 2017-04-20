@@ -8,10 +8,19 @@ if (App::isAuth()) {
     App::redirect('index');
 }
 
+$request = new Request();
+
+if (!Security::checkSecurity($request->getFields())) {
+    echo '<h1>Забанен</h1>';
+    die();
+}
+
 if (isset($_POST['submit'])) {
     $db = Database::getInstance()->getConnection();
     $login = $_POST['login'];
     $password = $_POST['password'];
+
+    $password = Security::generatePassword($password, $login);
 
 
     $query = $db->prepare('SELECT * FROM users WHERE login=? AND `password`=?');

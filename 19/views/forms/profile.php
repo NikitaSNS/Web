@@ -19,7 +19,7 @@
     <input type="text" name="phone" value="<?php echo $form['phone']; ?>" placeholder="Телефон">
     <input type="text" name="login" value="<?php echo $form['login']; ?>" placeholder="Логин">
     <input type="text" name="password_sms" value="<?php echo $form['password_sms']; ?>" placeholder="Пароль из смс">
-    <input type="password" name="password" value="<?php echo $form['password']; ?>" placeholder="Пароль регистрации">
+    <input type="password" name="password" placeholder="Пароль регистрации">
     <input type="checkbox" id="news" name="subscribe[]" <?php echo $form['news'] ? 'checked' : '' ?> value="news">
     <label for="news">Новости</label>
     <input type="checkbox" id="shares" name="subscribe[]" <?php echo $form['shares'] ? 'checked' : '' ?> value="shares">
@@ -34,3 +34,4 @@
     <?php endif; ?>
     <input type="submit" name="submit" value="Принять">
 </form>
+<h3 style="text-align: center"><a href="logout.php">Выйти</a></h3>
