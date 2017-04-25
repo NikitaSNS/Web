@@ -59,7 +59,9 @@
             <img id="top_img" src="public/img/logo.png" alt="Moscow Auto Glass">
             <figcaption>
                 <h2 id="caption">О компании</h2>
-                <p id="description">My Drive is the home for all your files. With Google Drive for My Drive is the home for all your files. With Google Drive for My Drive is the home for all your files. With Google Drive for </p>
+                <p id="description">My Drive is the home for all your files. With Google Drive for My Drive is the home
+                    for all your files. With Google Drive for My Drive is the home for all your files. With Google Drive
+                    for </p>
             </figcaption>
         </figure>
     </div>
@@ -77,15 +79,21 @@
     <section>
         <h2>Добро пожаловать!</h2>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi natus voluptate illo magnam laudantium, odio quasi non nesciunt in vitae aliquam aspernatur totam quo aut hic dignissimos magni eaque praesentium, doloremque maxime at. Praesentium tenetur,
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi natus voluptate illo magnam laudantium,
+            odio quasi non nesciunt in vitae aliquam aspernatur totam quo aut hic dignissimos magni eaque praesentium,
+            doloremque maxime at. Praesentium tenetur,
             repellat corporis dolor atque fuga esse voluptates labore quod quis!
         </p>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi natus voluptate illo magnam laudantium, odio quasi non nesciunt in vitae aliquam aspernatur totam quo aut hic dignissimos magni eaque praesentium, doloremque maxime at. Praesentium tenetur,
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi natus voluptate illo magnam laudantium,
+            odio quasi non nesciunt in vitae aliquam aspernatur totam quo aut hic dignissimos magni eaque praesentium,
+            doloremque maxime at. Praesentium tenetur,
             repellat corporis dolor atque fuga esse voluptates labore quod quis!
         </p>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi natus voluptate illo magnam laudantium, odio quasi non nesciunt in vitae aliquam aspernatur totam quo aut hic dignissimos magni eaque praesentium, doloremque maxime at. Praesentium tenetur,
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi natus voluptate illo magnam laudantium,
+            odio quasi non nesciunt in vitae aliquam aspernatur totam quo aut hic dignissimos magni eaque praesentium,
+            doloremque maxime at. Praesentium tenetur,
             repellat corporis dolor atque fuga esse voluptates labore quod quis!
         </p>
     </section>
@@ -103,8 +111,10 @@
     <p>ООО "Название сайта" 2012</p>
 </footer>
 <script src="public/js/jquery-3.2.0.min.js"></script>
+<script src="public/js/jquery-ui.js"></script>
 <script src="public/js/pract7.js"></script>
 <script src="public/js/pract8.js"></script>
 <script src="public/js/pract9.js"></script>
 <script src="public/js/pract10.js"></script>
 <script src="public/js/pract11.js"></script>
+<script src="public/js/pract12.js"></script>
