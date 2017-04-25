@@ -31,7 +31,7 @@ for(let key in browsersImgs) {
 console.log(imgLink);
 
 if (imgLink !== '') {
-    element.outerHTML = '<img src="public/1img/' + imgLink + '" alt="Moscow Auto Glass">';
+    element.outerHTML = '<img id="top_img"  src="public/img/' + imgLink + '" alt="Moscow Auto Glass">';
 }
 
 function getBrowser() {

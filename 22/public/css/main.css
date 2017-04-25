@@ -68,7 +68,6 @@ input[type="submit"] {
 form > p.error {
     color: #fff;
 }
-
 body {
     padding-top: 17px;
     display: block;
@@ -78,6 +77,10 @@ body {
     background-repeat: no-repeat, no-repeat;
     background-position: bottom, top;
     background-color: #000;
+}
+
+.social-holder li {
+    position: relative;
 }
 
 body {

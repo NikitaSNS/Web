@@ -102,7 +102,9 @@
 <footer>
     <p>ООО "Название сайта" 2012</p>
 </footer>
+<script src="public/js/jquery-3.2.0.min.js"></script>
 <script src="public/js/pract7.js"></script>
 <script src="public/js/pract8.js"></script>
 <script src="public/js/pract9.js"></script>
 <script src="public/js/pract10.js"></script>
+<script src="public/js/pract11.js"></script>

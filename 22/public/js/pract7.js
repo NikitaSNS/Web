@@ -2,14 +2,17 @@
 // меняется текст на машине меняется (всего 5 вариантов разных),
 // а при наведении на машину меняется заголовок.
 
-let img = document.getElementById('top_img');
-img.onclick = function () {
-    setNextText('description');
-};
+setTimeout(function () {
+    let img = document.getElementById('top_img');
 
-img.onmouseover = function () {
-    setNextText('caption');
-};
+    img.onclick = function () {
+        setNextText('description');
+    };
+
+    img.onmouseover = function () {
+        setNextText('caption');
+    };
+}, 500);
 
 function setNextText(id) {
     let element = document.getElementById(id);
