@@ -5,4 +5,5 @@
     <input type="password" name="password" placeholder="Пароль" required>
     <input type="submit" name="submit" value="Submit">
     <h4><a href="registration.php">Псс. Нужна регистрация?</a></h4>
+    <h4><a href="index.php">На главную</a></h4>
 </form>

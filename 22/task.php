@@ -80,7 +80,6 @@ class Returner
 //                    ];
 
                     var_dump($this->directorys);
-                    die();
 
                     //for each directory
                     foreach ($this->directorys as $directory) {

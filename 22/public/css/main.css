@@ -31,7 +31,7 @@ input[type="text"],
 input[type="password"],
 input[type="date"],
 input[type="number"] {
-    min-width:50%;
+    min-width: 50%;
 }
 
 input {
@@ -68,6 +68,7 @@ input[type="submit"] {
 form > p.error {
     color: #fff;
 }
+
 body {
     padding-top: 17px;
     display: block;
@@ -112,7 +113,7 @@ h2 {
     justify-content: space-around;
 }
 
-.top>* {
+.top > * {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -124,12 +125,12 @@ header ul {
     display: inline-block;
 }
 
-.right-contact>legend {
+.right-contact > legend {
     text-transform: uppercase;
     color: #fff;
 }
 
-.right-contact>p {
+.right-contact > p {
     text-align: center;
 }
 
@@ -138,7 +139,7 @@ figure {
     position: relative;
 }
 
-figure>img {
+figure > img {
     width: 100%;
 }
 
@@ -153,13 +154,13 @@ figcaption {
     padding-right: 40px;
 }
 
-figcaption>h2 {
+figcaption > h2 {
     text-transform: uppercase;
     margin-top: 25px;
     margin-bottom: 10px;
 }
 
-figcaption>p {
+figcaption > p {
     margin-bottom: 15px;
 }
 
@@ -222,14 +223,14 @@ main {
     flex-flow: row wrap;
 }
 
-main>section {
+main > section {
     display: flex;
     flex: 2;
     flex-flow: column;
     padding: 0 10px;
 }
 
-main>aside {
+main > aside {
     flex: 1;
 }
 
@@ -237,7 +238,7 @@ main h2 {
     text-align: center;
 }
 
-main section>p {
+main section > p {
     margin-top: 15px;
 }
 
@@ -303,7 +304,7 @@ footer {
     color: #ffdc73;
 }
 
-footer>p {
+footer > p {
     text-align: center;
     padding: 50px 0 20px 0;
 }
@@ -312,28 +313,35 @@ footer>p {
     main {
         flex-flow: column wrap;
     }
-    main>aside {
+
+    main > aside {
         margin-top: 10px;
     }
+
     .left-logo {
         order: 1;
     }
+
     .right-contact {
         order: 2;
     }
+
     .social-holder {
         order: 3;
     }
+
     nav ul {
         padding: 10px 0;
         border: none;
         flex-direction: column;
         flex-wrap: wrap;
     }
+
     nav li {
         margin-top: 5px;
     }
-    figcaption>h2 {
+
+    figcaption > h2 {
         font-size: 1.2em;
         margin-top: 15px;
         margin-bottom: 10px;
@@ -350,4 +358,32 @@ footer>p {
         color: #fff;
         padding: 10px;
     }
+}
+
+.auth {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.auth a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: .5em 2em;
+    outline: none;
+    border-width: 2px 0;
+    border-style: solid none;
+    border-color: #FDBE33 #000 #D77206;
+    border-radius: 6px;
+    background: linear-gradient(#F3AE0F, #E38916) #E38916;
+    transition: 0.2s;
+}
+
+.auth a:hover {
+    background: linear-gradient(#f5ae00, #f59500) #f5ae00;
+}
+
+.auth a:active {
+    background: linear-gradient(#f59500, #f5ae00) #f59500;
 }

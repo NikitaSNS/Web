@@ -7,7 +7,7 @@ session_start();
 include 'vendor/autoloader.php';
 
 if (App::isAuth()) {
-    App::redirect('index');
+    App::redirect('profile');
 }
 
 $request = new Request();

@@ -53,6 +53,17 @@
             <p>+7 910 400 14 19</p>
             <p>Москва ул мельникова д 5</p>
         </fieldset>
+        <?php if (!isset($_SESSION['auth'])) : ?>
+            <div class="auth">
+                <a href="login.php">Авторизация</a>
+                <a href="registration.php">Регистрация</a>
+            </div>
+        <?php else: ?>
+            <div class="auth">
+                <a href="profile.php">Профиль</a>
+                <a href="logout.php">Выйти</a>
+            </div>
+        <? endif; ?>
     </div>
     <div>
         <figure>

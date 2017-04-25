@@ -33,7 +33,8 @@
         <hr>
     <?php endif; ?>
     <input type="submit" name="submit" value="Принять">
+    <h4><a href="logout.php">Разлогиниться</a></h4>
+    <h4><a href="index.php">На главную</a></h4>
 </form>
-<h3 style="text-align: center"><a href="logout.php">Выйти</a></h3>
 
 <script src="public/js/profile_checker.js"></script>

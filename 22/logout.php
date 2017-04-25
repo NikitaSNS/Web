@@ -15,4 +15,4 @@ if (!Security::checkSecurity($request->getFields())) {
 $_SESSION = [];
 session_destroy();
 
-App::redirect('login');
+App::redirect('index');
