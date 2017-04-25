@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lose</title>
+    <style>
+        main {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <img src="../img/logo.png" alt="Moscow Auto Glass">
+    <h1>Game over</h1>
+</main>
+
+<script>
+    let id = '#!/amazingcode';
+
+    history.replaceState(null, document.title, location.pathname + id);
+    history.pushState(null, document.title, location.pathname);
+
+    window.addEventListener("popstate", function () {
+        if (location.hash === id) {
+            history.replaceState(null, document.title, location.pathname);
+            setTimeout(function () {
+                location.replace("../");
+            }, 0);
+        }
+    }, false);
+</script>
+
+
+</body>
+</html>

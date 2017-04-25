@@ -104,3 +104,4 @@
 </footer>
 <script src="public/js/pract7.js"></script>
 <script src="public/js/pract8.js"></script>
+<script src="public/js/pract9.js"></script>
